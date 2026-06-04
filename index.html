@@ -25,6 +25,7 @@ body {
   font-family: "Inter", sans-serif;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 /* HERO */
@@ -108,7 +109,7 @@ h2::after {
   border-radius: 5px;
 }
 
-/* DETAILS CARDS */
+/* CARDS */
 .card {
   background: var(--card);
   padding: 18px;
@@ -118,11 +119,14 @@ h2::after {
   border-left: 4px solid var(--primary);
 }
 
-/* GALLERY */
+/* =======================
+   GALLERY (UPGRADED)
+======================= */
+
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
 }
 
 @media (min-width: 768px) {
@@ -132,23 +136,40 @@ h2::after {
 }
 
 .gallery-item {
+  position: relative;
   text-align: center;
+  overflow: visible;
 }
 
+/* IMAGE */
 .gallery img {
   width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+  will-change: transform;
 }
 
+/* DESKTOP HOVER ZOOM */
 .gallery img:hover {
-  transform: scale(1.03);
+  transform: scale(1.15);
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
 }
 
+/* LABEL */
 .gallery p {
   margin-top: 6px;
   font-size: 0.85rem;
   opacity: 0.7;
+}
+
+/* MOBILE TOUCH ZOOM */
+@media (hover: none) {
+  .gallery img:active {
+    transform: scale(1.08);
+  }
 }
 
 /* FORM */
@@ -192,6 +213,22 @@ footer {
   padding: 30px 16px;
   background: var(--soft);
   font-size: 0.85rem;
+}
+
+/* MOBILE TWEAKS */
+@media (max-width: 480px) {
+  section {
+    padding: 45px 14px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
 </head>
